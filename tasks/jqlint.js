@@ -37,21 +37,24 @@ module.exports = function (grunt) {
           var code, report, e, eLength, error;
 
           if (!options.errorsOnly) {
+            grunt.verbose.writeln(filepath);
             grunt.log.writeln(filepath);
           }
 
           code = grunt.file.read(filepath);
           report = jqlint(code);
-          eLength = report.errors.length;
-          if (eLength) {
-            isFailed = true;
-            if (options.errorsOnly) {
+          if (Array.isArray(report.errors)) {
+            eLength = report.errors.length;
+            if (eLength) {
+              isFailed = true;
+              if (options.errorsOnly) {
+                grunt.log.writeln(filepath);
+              }
               grunt.log.writeln(filepath);
-            }
-            grunt.log.writeln(filepath);
-            for (e = 0; e < eLength; e += 1) {
-              error = report.errors[e];
-              grunt.log.errorlns(JSON.stringify(error));
+              for (e = 0; e < eLength; e += 1) {
+                error = report.errors[e];
+                grunt.log.errorlns(JSON.stringify(error));
+              }
             }
           }
         });
