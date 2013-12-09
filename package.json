@@ -1,0 +1,23 @@
+{
+  "name": "grunt-jqlint",
+  "description": "validate JavaScript files with jqlint",
+  "version": "0.1.0",
+  "dependencies": {
+    "jqlint": "~1.0.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4",
+    "grunt-jslint": "~1.1"
+  },
+  "license": "BSD",
+  "keywords": ["jquery", "lint", "code quality", "gruntplugin"],
+  "homepage": "https://github.com/jokeyrhyme/grunt-jqlint",
+  "author": {
+    "name": "Ron Waldon",
+    "url": "http://jokeyrhy.me/"
+  },
+  "files": [
+    "lib/constants.js",
+    "jqlint.js"
+  ]
+}
