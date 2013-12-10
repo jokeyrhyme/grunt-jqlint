@@ -29,9 +29,9 @@ grunt.initConfig({
       options: {
         // Task-specific options go here.
       },
-      src: {
+      src: [
         // list files or file patterns here
-      }
+      ]
     },
     // additional configurations
   },
@@ -71,6 +71,30 @@ grunt.initConfig({
   }
 });
 ```
+
+For a Node.JS web server, you might only want to scan your client-side files (if that's the only place you use jQuery):
+```
+src: [
+  'public/**/*.js',
+  '!**/bower_components/**/*',
+  '!**/*.min.js'
+]
+```
+
+Alternatively, you might want to scan everything except test files:
+```
+src: [
+  '**/*.js',
+  '!**/bower_components/**/*',
+  '!**/node_modules/**/*',
+  '!**/*.min.js',
+  '!tests/**/*.js'
+]
+```
+
+Note: with the `src` array, all exclusions (with the leading "!") need to be at the end.
+
+It's important for test feedback performance that you reduce the jqlint scope to only the files that contain your code that uses jQuery.
 
 ## Contributing
 
